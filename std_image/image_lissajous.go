@@ -11,11 +11,11 @@ import (
 
 const (
 	whiteIndex = 0
-	blackIndex = 1
+	colorIdx   = 2
 )
 
 // define color palette
-var palette = []color.Color{color.White, color.Black}
+var palette = []color.Color{color.White, color.RGBA{0, 255, 0, 1}, color.RGBA{255, 165, 0, 1}}
 
 func Lissajous(out io.Writer) {
 	const (
@@ -40,9 +40,10 @@ func Lissajous(out io.Writer) {
 			x := math.Sin(t)
 			y := math.Sin(t*freq + phase)
 			image.SetColorIndex(size+int(x*size+1), size+int(y*size+0.5),
-				blackIndex)
+				colorIdx)
 		}
 		phase += 0.1
+		//individual field of a struct can be accessed using dot notation
 		animation.Delay = append(animation.Delay, delay)
 		animation.Image = append(animation.Image, image)
 	}
