@@ -11,3 +11,13 @@ func Boiling2(){
 func fToC(f float64) float64 {
 	return (f-32) * 5 / 9;
 }
+
+
+
+func Fib(n int )int{
+	x , y := 0,1
+	for range n {
+		x , y = y , x + y
+	}
+	return x ;
+}
